@@ -32,7 +32,6 @@ def checkSet(cardArray):
     for i in range(0, len(cardArray)):
         if cardArray[i] != i + 1:
             return False;
-
     return True;
 
 def addCards(newCards, cardArray):
@@ -42,22 +41,13 @@ def addCards(newCards, cardArray):
 
 def run_sim(itCount, numCards):
     totalCount = 0
-    minCount = 100000
-    maxCount = 0
-
     for i in range(0,itCount):
         count = run_one(numCards);
-        if count < minCount:
-            minCount = count
-        if count > maxCount:
-            maxCount = count
         totalCount = totalCount + run_one(numCards);
-    print float(totalCount) / itCount
-    print maxCount
-    print minCount
-    return totalCount
+    return float(totalCount) / itCount
 
 
-run_sim(10000, 100);
+print "Average Number of 10 card packs needed to get 100 Cards: ", run_sim(100000, 100);
 print ""
-run_sim(10000, 300);
+#Can take a long time to run. Reduce first input to reduce iterations and run time
+print "Average Number of 10 card packs needed to get 300 Cards: ", run_sim(10000, 300);
