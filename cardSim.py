@@ -11,10 +11,11 @@ def run_one(numCards):
 
 
 def drawCards(numCards):
-    cardArray = [-1]*10;
+    packSize = 10
+    cardArray = [-1]*packSize;
     i = 0;
     count = 0
-    while i < 10:
+    while i < packSize:
         card = random.randint(1,numCards);
         j = 0;
         notFound = True;
@@ -43,11 +44,11 @@ def run_sim(itCount, numCards):
     totalCount = 0
     for i in range(0,itCount):
         count = run_one(numCards);
-        totalCount = totalCount + run_one(numCards);
+        totalCount = totalCount + count;
     return float(totalCount) / itCount
 
 
-print "Average Number of 10 card packs needed to get 100 Cards: ", run_sim(100000, 100);
+print "Average Number of 10 card packs needed to get 100 Cards: ", run_sim(10000, 100);
 print ""
 #Can take a long time to run. Reduce first input to reduce iterations and run time
 print "Average Number of 10 card packs needed to get 300 Cards: ", run_sim(10000, 300);
